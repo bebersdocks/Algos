@@ -1,9 +1,9 @@
 module ListUtils
 
-let length xs = 
+let length xs =
     let rec length xs n =
         match xs with 
-        | [] -> n 
+        | [] -> n
         | _ :: tail -> length tail (n + 1)
     length xs 0
 

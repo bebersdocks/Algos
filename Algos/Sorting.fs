@@ -19,13 +19,17 @@ let rec quickSort xs =
     | [] -> []
     | hd :: tail ->
         let (left, right) = separateBy (fun x -> x < hd) tail
-        append left (hd :: (quickSort right))
+        append (quickSort left) (hd :: (quickSort right))
 
 let bubbleSort xs =
     let rec bubbleSort xs acc n =
+        let continueOrReturn acc =
+            if n = 0 then reverse acc else bubbleSort (reverse acc) [] (n - 1)
+
         match xs with
-        | [] -> if n = 0 then acc else bubbleSort acc [] (n - 1)
-        | [hd] -> if n = 0 then hd :: acc else bubbleSort acc [] (n - 1)
-        | hd :: el :: tail when hd <= el -> bubbleSort tail (hd :: el :: acc) n
-        | hd :: el :: tail -> bubbleSort tail (el :: hd :: acc) n
+        | [] -> continueOrReturn acc
+        | [hd] -> continueOrReturn (hd :: acc)
+        | hd :: el :: tail when hd <= el -> bubbleSort (el :: tail) (hd :: acc) n
+        | hd :: el :: tail -> bubbleSort (hd :: tail) (el :: acc) n
+    
     bubbleSort xs [] (length xs)
