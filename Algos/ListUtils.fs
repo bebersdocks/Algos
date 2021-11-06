@@ -10,7 +10,7 @@ let length xs =
 ///<summary>
 /// Separates list in two by predicate.
 ///</summary>
-///<return>Tuple of two lists.</return>
+///<returns>Tuple of two lists.</returns>
 let separateBy f xs =
     let rec separateBy xs left right = 
         match xs with
@@ -27,8 +27,31 @@ let reverse xs =
     reverse xs []
 
 let append xs ys =
-    let rec append xs acc = 
+    let rec append xs acc =
         match xs with
         | [] -> acc
         | hd :: tail -> append tail (hd :: acc)
     append (reverse xs) ys
+
+exception ListUtilsException of string
+
+let head = function
+    | [] -> raise (ListUtilsException "empty list doesn't have head")
+    | hd :: _ -> hd
+
+let min xs =
+    let rec min xs current =
+        match xs with
+        | [] -> current
+        | hd :: tail when hd < current -> min tail hd 
+        | _ :: tail -> min tail current
+
+    min xs (head xs)
+
+let excludeOne f xs =
+    let rec excludeOne xs acc =
+        match xs with
+        | [] -> acc
+        | hd :: tail when f hd -> append acc tail 
+        | hd :: tail -> excludeOne tail (hd :: acc)
+    excludeOne xs []

@@ -24,6 +24,11 @@ let lists =
 let equal (xs: 'a list) (f: 'a list -> 't) (g: 'a list -> 't) =
     Assert.Equal<'t>(f xs, g xs)
 
+[<Fact>]
+let ``Length of the list`` () =
+    lists
+    |> List.iter (fun x -> equal x ListUtils.length List.length)
+
 let produceSameContent (xs: 'a list) (f: 'a list -> 'a list) (g: 'a list -> 'a list) =
     let rec produceSameContent xs ys =
         match xs, ys with
@@ -31,23 +36,23 @@ let produceSameContent (xs: 'a list) (f: 'a list -> 'a list) (g: 'a list -> 'a l
         | x :: xs, y :: ys when x = y -> produceSameContent xs ys
         | _ -> false
     Assert.True(produceSameContent (f xs) (g xs))
-
-[<Fact>]
-let ``Length of the list`` () =
+ 
+let sortIsCorrect f =
     lists
-    |> List.iter (fun x -> equal x ListUtils.length List.length)
+    |> List.iter (fun x -> produceSameContent x f List.sort)
 
 [<Fact>]
 let ``Insertion sort`` () =
-    lists
-    |> List.iter (fun x -> produceSameContent x insertionSort List.sort)
+    sortIsCorrect insertionSort
 
 [<Fact>]
 let ``Quick sort`` () =
-    lists
-    |> List.iter (fun x -> produceSameContent x quickSort List.sort)
+    sortIsCorrect quickSort
 
 [<Fact>]
 let ``Bubble sort`` () =
-    lists
-    |> List.iter (fun x -> produceSameContent x bubbleSort List.sort)
+    sortIsCorrect bubbleSort
+
+[<Fact>]
+let ``Selection sort`` () =
+    sortIsCorrect selectionSort
