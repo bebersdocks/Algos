@@ -19,7 +19,7 @@ let rec quickSort xs =
     | [] -> []
     | hd :: tail ->
         let (left, right) = separateBy (fun x -> x < hd) tail
-        quickSort left @ (hd :: (quickSort right))
+        append left (hd :: (quickSort right))
 
 let bubbleSort xs =
     let rec bubbleSort xs acc n =
