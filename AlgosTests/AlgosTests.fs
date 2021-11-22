@@ -1,32 +1,36 @@
 module AlgosTests
 
-open ListUtils
-open Sorting
 open System
+
+open ListUtils
+
+open Sorting
+
 open Xunit
 
-let nextRandom minValue maxValue = 
-    Random().Next(minValue, maxValue)
+let nextRandom min max = 
+    Random().Next(min, max)
 
-///<summary>
+/// <summary>
 /// Generates list of pseudo-random length and content.
-///</summary>
-let nextRandomNumbers =
-    seq { 0 .. nextRandom 5 60 }
-    |> Seq.map (fun _ -> nextRandom -1000 1000)
+/// </summary>
+let randomListOfFunc f min max =
+    seq { 0 .. nextRandom min max }
+    |> Seq.map f
     |> List.ofSeq
 
-let lists =
-    seq { 0 .. nextRandom 10 30 }
-    |> Seq.map (fun _ -> nextRandomNumbers)
-    |> List.ofSeq
+let nextRandomNumbers =
+    randomListOfFunc (fun _ -> nextRandom -1000 1000) 5 60
+
+let nextLists =
+    randomListOfFunc (fun _ -> nextRandomNumbers) 10 30
 
 let equal (xs: 'a list) (f: 'a list -> 't) (g: 'a list -> 't) =
     Assert.Equal<'t>(f xs, g xs)
 
 [<Fact>]
 let ``Length of the list`` () =
-    lists
+    nextLists
     |> List.iter (fun x -> equal x ListUtils.length List.length)
 
 let produceSameContent (xs: 'a list) (f: 'a list -> 'a list) (g: 'a list -> 'a list) =
@@ -38,7 +42,7 @@ let produceSameContent (xs: 'a list) (f: 'a list -> 'a list) (g: 'a list -> 'a l
     Assert.True(produceSameContent (f xs) (g xs))
  
 let sortIsCorrect f =
-    lists
+    nextLists
     |> List.iter (fun x -> produceSameContent x f List.sort)
 
 [<Fact>]

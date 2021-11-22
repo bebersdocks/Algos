@@ -7,10 +7,10 @@ let length xs =
         | _ :: tail -> length tail (n + 1)
     length xs 0
 
-///<summary>
+/// <summary>
 /// Separates list in two by predicate.
-///</summary>
-///<returns>Tuple of two lists.</returns>
+/// </summary>
+/// <returns>Tuple of two lists.</returns>
 let separateBy f xs =
     let rec separateBy xs left right = 
         match xs with
