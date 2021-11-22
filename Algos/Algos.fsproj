@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
+        <OutputType>Exe</OutputType>
         <WarnOn>3390;$(WarnOn)</WarnOn>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="ListUtils.fs" />
         <Compile Include="Sorting.fs" />
+        <Compile Include="BinaryTree.fs" />
     </ItemGroup>
 </Project>
