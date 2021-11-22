@@ -1,4 +1,4 @@
-module AlgosTests
+module SortingTests
 
 open System
 
