@@ -3,7 +3,9 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="TestUtils.fs" />
         <Compile Include="SortingTests.fs" />
+        <Compile Include="BinaryTreeTests.fs" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Algos\Algos.fsproj" />
