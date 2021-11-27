@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Algos", "Algos\Algos.fsproj", "{E0FCB05C-7855-4EE0-90BE-3E03918E79DB}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AlgosTests", "AlgosTests\AlgosTests.fsproj", "{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{E0FCB05C-7855-4EE0-90BE-3E03918E79DB}.Release|x64.Build.0 = Release|Any CPU
 		{E0FCB05C-7855-4EE0-90BE-3E03918E79DB}.Release|x86.ActiveCfg = Release|Any CPU
 		{E0FCB05C-7855-4EE0-90BE-3E03918E79DB}.Release|x86.Build.0 = Release|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Debug|x64.Build.0 = Debug|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Debug|x86.Build.0 = Debug|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Release|x64.ActiveCfg = Release|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Release|x64.Build.0 = Release|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Release|x86.ActiveCfg = Release|Any CPU
+		{5BD34C9D-0D94-4FB8-82CC-DBAE73FBE897}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
