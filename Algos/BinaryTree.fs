@@ -1,4 +1,4 @@
-module BinaryTree
+module Algos.BinaryTree
 
 type BinaryTree<'T> =
     | Node of 'T * BinaryTree<'T> * BinaryTree<'T>

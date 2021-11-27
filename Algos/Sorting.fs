@@ -1,6 +1,6 @@
-module Sorting
+module Algos.Sorting
 
-open ListUtils
+open Algos.ListUtils
 
 let insertionSort xs =
     let rec insert x ys =

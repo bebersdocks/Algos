@@ -1,4 +1,4 @@
-module ListUtils
+module Algos.ListUtils
 
 let length xs =
     let rec length xs n =

@@ -1,10 +1,9 @@
-module SortingTests
+module AlgosTests.SortingTests
 
 open System
 
-open ListUtils
-
-open Sorting
+open Algos.ListUtils
+open Algos.Sorting
 
 open Xunit
 
