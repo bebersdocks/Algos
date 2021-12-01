@@ -29,7 +29,7 @@ let randomListOfFunc f min max =
     |> Seq.map f
     |> List.ofSeq
 
-let nextRandomNumbers =
+let nextRandomNumbers () =
     randomListOfFunc (fun _ -> nextRandom -1000 1000) 5 60
 
 let nextLists =
