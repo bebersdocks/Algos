@@ -42,3 +42,20 @@ let selectionSort xs =
             let el = min xs
             selectionSort (excludeOne (fun x -> x = el) xs) (el :: acc) (n - 1)
     selectionSort xs [] (length xs)
+
+let merge xs ys = 
+    let rec merge xs ys acc =
+        match xs, ys with
+        | [], [] -> reverse acc
+        | xs, [] -> append (reverse acc) xs
+        | [], ys -> append (reverse acc) ys
+        | x :: xs, y :: ys when x <= y -> merge xs (y :: ys) (x :: acc)
+        | x :: xs, y :: ys -> merge (x :: xs) ys (y :: acc)
+    merge xs ys []
+
+let rec mergeSort xs =
+    match length xs / 2 with // int division 
+    | n when n = 0 -> xs
+    | n ->
+        let (left, right) = splitAt n xs 
+        merge (mergeSort left) (mergeSort right)

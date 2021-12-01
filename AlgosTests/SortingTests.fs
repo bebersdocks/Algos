@@ -9,23 +9,6 @@ open AlgosTests.TestUtils
 
 open Xunit
 
-let nextRandom min max = 
-    Random().Next(min, max)
-
-/// <summary>
-/// Generates list of pseudo-random length and content.
-/// </summary>
-let randomListOfFunc f min max =
-    seq { 0 .. nextRandom min max }
-    |> Seq.map f
-    |> List.ofSeq
-
-let nextRandomNumbers =
-    randomListOfFunc (fun _ -> nextRandom -1000 1000) 5 60
-
-let nextLists =
-    randomListOfFunc (fun _ -> nextRandomNumbers) 10 30
-
 [<Fact>]
 let ``Length of the list`` () =
     nextLists
@@ -50,3 +33,7 @@ let ``Bubble sort`` () =
 [<Fact>]
 let ``Selection sort`` () =
     sortIsCorrect selectionSort
+
+[<Fact>]
+let ``Merge sort`` () =
+    sortIsCorrect mergeSort

@@ -1,5 +1,7 @@
 module Algos.ListUtils
 
+open System
+
 let length xs =
     let rec length xs n =
         match xs with 
@@ -36,7 +38,7 @@ let append xs ys =
 exception ListUtilsException of string
 
 let head = function
-    | [] -> raise (ListUtilsException "empty list doesn't have head")
+    | [] -> raise (ListUtilsException "Empty list doesn't have head.")
     | hd :: _ -> hd
 
 let min xs =
@@ -55,3 +57,10 @@ let excludeOne f xs =
         | hd :: tail when f hd -> append acc tail 
         | hd :: tail -> excludeOne tail (hd :: acc)
     excludeOne xs []
+
+let splitAt n xs =
+    let rec splitAt n xs acc =
+        match xs with 
+        | x :: xs when n > 0 -> splitAt (n - 1) xs (x :: acc)
+        | _ -> (reverse acc, xs)
+    splitAt n xs []
